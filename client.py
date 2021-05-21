@@ -53,13 +53,28 @@ class Client:
         self.send_button =tkinter.Button(self.win, text="Send", command=self.write)
         self.send_button.config(font=("Arial", 12))
         self.send_button.pack(padx=20, pady=5)
+#emojis
+        self.send_button =tkinter.Button(self.win, text="(^o^)", command=self.feliz)
+        self.send_button.config(font=("Arial", 12))
+        self.send_button.pack(padx=20, pady=5)
+        self.send_button =tkinter.Button(self.win, text="(｡>﹏<｡)", command=self.triste)
+        self.send_button.config(font=("Arial", 12))
+        self.send_button.pack(padx=20, pady=5)
 
         self.gui_done = True
         self.win.protocol("WM_DELETE_WINDOW",self.stop)
 
         self.win.mainloop()
-
-
+#função emosji triste
+    def triste(self):
+        message = (f"{self.nickname}:{self.input_area.get('1.0', 'end')}(｡>﹏<｡)")
+        self.sock.send(message.encode('UTF-8'))
+        self.input_area.delete('1.0', 'end')
+#função emosji feliz
+    def feliz(self):
+        message = (f"{self.nickname}:{self.input_area.get('1.0', 'end')}(^o^)")
+        self.sock.send(message.encode('UTF-8'))
+        self.input_area.delete('1.0', 'end')
     def write(self):
         message = (f"{self.nickname}: {self.input_area.get('1.0', 'end')}")
         self.sock.send(message.encode('UTF-8'))
