@@ -33,8 +33,7 @@ class Client:
 
     def gui_loop(self):
         self.win = tkinter.Tk()
-        self.win.configure(bg="lightgray")
-
+        self.win.config(padx=10,pady=10,bg="lightgray")
         self.chat_label = tkinter.Label(self.win, text="chat: ", bg="lightgray")
         self.chat_label.config(font=("Arial",12))
         self.chat_label.pack(padx=20, pady=5)
@@ -54,7 +53,7 @@ class Client:
         self.send_button.config(font=("Arial", 12))
         self.send_button.pack(padx=500, pady=5)
 #emojis
-        self.send_button =tkinter.Button(self.win, text="(^o^)", command=self.feliz)
+        self.send_button =tkinter.Button(self.win, width=10, text="(^o^)", command=self.feliz,)
         self.send_button.config(font=("Arial", 12))
         self.send_button.pack(padx=100, pady=5)
         self.send_button =tkinter.Button(self.win, text="(^o^;", command=self.triste)
@@ -73,27 +72,28 @@ class Client:
         self.win.mainloop()
 #função emosji fofo
     def fofo(self):
-        message = (f"{self.nickname}:(*^_^*)\n")
+        message = (f" {self.nickname}:(*^_^*)")
         self.sock.send(message.encode('UTF-8'))
         self.input_area.delete('1.0', 'end')        
 #função emosji tanto_faz
     def tanto_faz(self):
-        message = (f"{self.nickname}:(-- _ -- )\n")
+        message = (f" {self.nickname}:(-- _ -- )")
         self.sock.send(message.encode('UTF-8'))
         self.input_area.delete('1.0', 'end')
 #função emosji triste
     def triste(self):
-        message = (f"{self.nickname}:(^o^; \n")
+        message = (f"(^o^; {self.nickname}:{self.input_area.get('1.0', 'end')}")
         self.sock.send(message.encode('UTF-8'))
         self.input_area.delete('1.0', 'end')
 #função emosji feliz
     def feliz(self):
-        message = (f"{self.nickname}:(^o^)\n")
+        message = (f"(^o^) {self.nickname}:{self.input_area.get('1.0', 'end')}")
         self.sock.send(message.encode('UTF-8'))
         self.input_area.delete('1.0', 'end')
+        
 
     def write(self):
-        message = (f"\n{self.nickname}: {self.input_area.get('1.0', 'end')}")
+        message = (f"{self.nickname}: {self.input_area.get('1.0', 'end')}")
         self.sock.send(message.encode('UTF-8'))
         self.input_area.delete('1.0', 'end')
 
