@@ -19,7 +19,7 @@ class Client:
         msg = tkinter.Tk()
         msg.withdraw()
 
-        self.nickname = simpledialog.askstring("Nickname", "please choose a nickname",parent = msg)
+        self.nickname = simpledialog.askstring("Usuario", "nome do usuario",parent = msg)
 
         self.gui_done = False
 
@@ -32,7 +32,7 @@ class Client:
         receive_thread.start()
 
     def gui_loop(self):
-        self.win = tkinter.Tk()
+        self.win = tkinter.Tk("Usuario")
         self.win.config(padx=10,pady=10,bg="lightgray")
         self.chat_label = tkinter.Label(self.win, text="chat: ", bg="lightgray")
         self.chat_label.config(font=("Arial",12))
@@ -42,14 +42,14 @@ class Client:
         self.text_area.pack(padx=20, pady=5)
         self.text_area.config(state='disabled')
 
-        self.msg_label = tkinter.Label(self.win, text="message: ", bg="lightgray")
+        self.msg_label = tkinter.Label(self.win, text="mensegem: ", bg="lightgray")
         self.msg_label.config(font=("Arial",12))
         self.msg_label.pack(padx=20, pady=5)
 
         self.input_area = tkinter.Text(self.win, height=3)
         self.input_area.pack(padx=20, pady=5)
 #botão de mandar 
-        self.send_button =tkinter.Button(self.win, text="Send", command=self.write)
+        self.send_button =tkinter.Button(self.win, text="enviar", command=self.write)
         self.send_button.config(font=("Arial", 12))
         self.send_button.pack(padx=500, pady=5)
 #emojis

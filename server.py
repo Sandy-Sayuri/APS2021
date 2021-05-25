@@ -51,5 +51,5 @@ def receive():
         thread = threading.Thread(target=handle, args=(client,))
         thread.start()
 
-print("server running")
+print("o servidor está funcionando")
 receive()        
