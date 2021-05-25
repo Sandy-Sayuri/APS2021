@@ -72,7 +72,7 @@ class Client:
         self.win.mainloop()
 #função emosji fofo
     def fofo(self):
-        message = (f" {self.nickname}:(*^_^*)")
+        message = (f"{self.nickname}:(*^_^*)")
         self.sock.send(message.encode('UTF-8'))
         self.input_area.delete('1.0', 'end')        
 #função emosji tanto_faz
@@ -82,12 +82,12 @@ class Client:
         self.input_area.delete('1.0', 'end')
 #função emosji triste
     def triste(self):
-        message = (f"(^o^; {self.nickname}:{self.input_area.get('1.0', 'end')}")
+        message = (f"(^o^;")
         self.sock.send(message.encode('UTF-8'))
         self.input_area.delete('1.0', 'end')
 #função emosji feliz
     def feliz(self):
-        message = (f"(^o^) {self.nickname}:{self.input_area.get('1.0', 'end')}")
+        message = (f"(^o^)")
         self.sock.send(message.encode('UTF-8'))
         self.input_area.delete('1.0', 'end')
         
